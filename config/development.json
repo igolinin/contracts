@@ -1,0 +1,6 @@
+{
+  "db": {
+    "host": "mongodb://localhost/auth"
+  },
+  "jwt": "top-secret"
+}

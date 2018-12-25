@@ -1,0 +1,3 @@
+{
+  "db": { "host": "mongodb://login-mongodb.jx.svc.cluster.local/contracts" }
+}
