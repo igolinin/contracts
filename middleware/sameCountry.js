@@ -7,8 +7,8 @@ module.exports = async function(req, res, next) {
   if (!token) return res.status(401).send("Access denied, No token present");
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT);
-    const client = await profile(req.client);
+    const decoded = await jwt.verify(token, process.env.JWT);
+    const client = await profile(req.body.client);
     console.log(client);
     if (decoded.country != client.country)
       return res.status(403).send("countries don't match");
