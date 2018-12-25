@@ -4,10 +4,11 @@ const router = express.Router();
 
 const sameCountry = require("../middleware/sameCountry");
 const manager = require("../middleware/manager");
+const time = require("../middleware/time");
 
 const axios = require("axios");
 
-router.post("/new", [manager, sameCountry], async (req, res) => {
+router.post("/new", [manager, sameCountry, time], async (req, res) => {
   const newContract = new Contract({
     manager: req.manager.email,
     service: "protection",
