@@ -9,7 +9,7 @@ const axios = require("axios");
 
 router.post("/new", [manager, sameCountry], async (req, res) => {
   const newContract = new Contract({
-    manger: req.manager,
+    manager: req.manager,
     service: "protection",
     client: req.client,
     country: req.client.country
