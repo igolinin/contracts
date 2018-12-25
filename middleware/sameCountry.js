@@ -10,6 +10,7 @@ module.exports = async function(req, res, next) {
     const decoded = await jwt.verify(token, process.env.JWT);
     const client = await profile(req.body.client);
     console.log(client);
+    req.client = client;
     if (decoded.country != client.country)
       return res.status(403).send("countries don't match");
     next();

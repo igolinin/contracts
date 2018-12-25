@@ -9,13 +9,13 @@ const contractSchema = new mongoose.Schema({
   },
   manager: {
     type: String,
-    required: true,
-    minlength: 8
+    lowercase: true,
+    required: true
   },
   service: {
     type: String
   },
-  city: {
+  country: {
     type: String
   },
   aproved_by: {
