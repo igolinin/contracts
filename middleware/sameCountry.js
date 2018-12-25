@@ -9,8 +9,9 @@ module.exports = function(req, res, next) {
   try {
     const decoded = jwt.verify(token, process.env.JWT);
     req.client = profile(req.client);
+    console.log(req.client);
     if (decoded.country != req.client.country)
-      return res.status(403).send("coutries don't match");
+      return res.status(403).send("countries don't match");
     next();
   } catch (ex) {
     res.status(400).send("invalid token");
