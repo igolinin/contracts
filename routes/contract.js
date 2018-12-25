@@ -11,7 +11,7 @@ router.post("/new", [manager, sameCountry], async (req, res) => {
   const newContract = new Contract({
     manager: req.manager.email,
     service: "protection",
-    client: req.client,
+    client: req.client.email,
     country: req.client.country,
     total: req.body.total
   });
