@@ -23,12 +23,12 @@ router.post("/new", [manager, sameCountry, time], async (req, res) => {
 router.put("/total", manager, async (req, res) => {
   let contract = await Contract.findOne({ _id: req.body._id });
   if (!contract) return res.status(400).send("contract not found");
-  if (contract.manager != req.manager)
+  if (contract.manager != req.manager.email)
     return res.status(403).send("not authorized to update this contract");
   await Contract.findByIdAndUpdate(req.body._id, {
     $set: { total: req.body.total }
   });
-  res.send(req);
+  res.send(OK);
 });
 
 router.put("/aprove", manager, async (req, res) => {
