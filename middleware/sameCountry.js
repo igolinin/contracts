@@ -2,13 +2,13 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const profile = require("../utils/getProfile");
 
-module.exports = function(req, res, next) {
+module.exports = async function(req, res, next) {
   const token = req.header("x-auth-token");
   if (!token) return res.status(401).send("Access denied, No token present");
 
   try {
     const decoded = jwt.verify(token, process.env.JWT);
-    req.client =await profile(req.client);
+    req.client = await profile(req.client);
     console.log(req.client);
     if (decoded.country != req.client.country)
       return res.status(403).send("countries don't match");
