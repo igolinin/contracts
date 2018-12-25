@@ -12,9 +12,10 @@ router.post("/new", [manager, sameCountry], async (req, res) => {
     manager: req.manager,
     service: "protection",
     client: req.client,
-    country: req.client.country
+    country: req.client.country,
+    total: req.body.total
   });
-  const result = newContract.save();
+  const result = await newContract.save();
   res.send(result);
 });
 

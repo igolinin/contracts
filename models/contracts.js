@@ -20,6 +20,9 @@ const contractSchema = new mongoose.Schema({
   },
   aproved_by: {
     type: String
+  },
+  total: {
+    type: Number
   }
 });
 function validateContract(contract) {
