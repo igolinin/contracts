@@ -28,7 +28,7 @@ router.put("/total", manager, async (req, res) => {
   await Contract.findByIdAndUpdate(req.body._id, {
     $set: { total: req.body.total }
   });
-  res.send(OK);
+  res.send("OK");
 });
 
 router.put("/aprove", manager, async (req, res) => {
