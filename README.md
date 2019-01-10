@@ -1,3 +1,3 @@
 # node 
 
-Simple Hello World that listens on localhost:8080
+Contract microservice for Kubernetes deployment. Part of Bachelor Thesis
