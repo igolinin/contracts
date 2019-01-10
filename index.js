@@ -20,7 +20,7 @@ mongoose
   .catch(err => console.log("cannot connect to db", err));
 const db = mongoose.connection;
 
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
