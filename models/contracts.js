@@ -18,6 +18,12 @@ const contractSchema = new mongoose.Schema({
   country: {
     type: String
   },
+  expires: {
+    type: Date,
+    default: () => {
+      return expireDate();
+    }
+  },
   approved_by: {
     type: String
   },
@@ -25,6 +31,10 @@ const contractSchema = new mongoose.Schema({
     type: Number
   }
 });
+function expireDate() {
+  let date = new Date();
+  return date.setFullYear(date.getFullYear + 1);
+}
 function validateContract(contract) {
   const schema = {
     client: Joi.string().required()
