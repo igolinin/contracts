@@ -18,7 +18,7 @@ const contractSchema = new mongoose.Schema({
   country: {
     type: String
   },
-  aproved_by: {
+  approved_by: {
     type: String
   },
   total: {
@@ -27,7 +27,7 @@ const contractSchema = new mongoose.Schema({
 });
 function validateContract(contract) {
   const schema = {
-    email: Joi.string().required()
+    client: Joi.string().required()
   };
   return Joi.validate(contract, schema);
 }

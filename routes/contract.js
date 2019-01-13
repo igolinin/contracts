@@ -11,9 +11,9 @@ const axios = require("axios");
 router.post("/new", [manager, sameCountry, time], async (req, res) => {
   const newContract = new Contract({
     manager: req.manager.email,
-    service: "protection",
+    service: req.body.service || "subscribtion",
     client: req.client.email,
-    country: req.client.country,
+    country: req.manager.country,
     total: req.body.total
   });
   const result = await newContract.save();
@@ -31,13 +31,13 @@ router.put("/total", manager, async (req, res) => {
   res.send("OK");
 });
 
-router.put("/aprove", manager, async (req, res) => {
+router.put("/approve", manager, async (req, res) => {
   let contract = await Contract.findOne({ _id: req.body._id });
   if (!contract) return res.status(400).send("contract not found");
   if (contract.manager == req.manager.email)
-    return res.status(403).send("not authorized to aprove own contract");
+    return res.status(403).send("not authorized to approve own contract");
   await Contract.findByIdAndUpdate(req.body._id, {
-    $set: { aproved_by: req.manager.email }
+    $set: { approved_by: req.manager.email }
   });
   res.send("OK");
 });
