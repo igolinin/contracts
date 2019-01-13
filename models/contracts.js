@@ -20,9 +20,7 @@ const contractSchema = new mongoose.Schema({
   },
   expires: {
     type: Date,
-    default: () => {
-      return expireDate();
-    }
+    default: expireDate()
   },
   approved_by: {
     type: String
