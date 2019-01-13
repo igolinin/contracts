@@ -33,7 +33,8 @@ const contractSchema = new mongoose.Schema({
 });
 function expireDate() {
   let date = new Date();
-  return date.setFullYear(date.getFullYear + 1);
+  date.setFullYear(date.getFullYear + 1);
+  return date;
 }
 function validateContract(contract) {
   const schema = {
