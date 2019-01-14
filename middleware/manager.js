@@ -8,7 +8,10 @@ module.exports = async function(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT);
-    if (decoded.role != "manager") return res.status(403).send("access denied");
+    if (decoded.role != "manager") {
+      consle.log("not a manager");
+      return res.status(403).send("access denied");
+    }
     req.manager = await manager(decoded.email);
     next();
   } catch (ex) {

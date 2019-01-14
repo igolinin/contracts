@@ -11,8 +11,10 @@ module.exports = async function(req, res, next) {
     const client = await profile(req.body.client);
     console.log(client);
     req.client = client;
-    if (decoded.country != client.country)
+    if (decoded.country != client.country) {
+      console.log("contry");
       return res.status(403).send("countries don't match");
+    }
     next();
   } catch (ex) {
     res.status(400).send("invalid token");
