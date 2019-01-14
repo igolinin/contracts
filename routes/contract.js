@@ -32,7 +32,7 @@ router.put("/total", manager, async (req, res) => {
 });
 
 router.put("/approve/:id", manager, async (req, res) => {
-  let contract = await Contract.findOne({ _id: req.body._id });
+  let contract = await Contract.findOne({ _id: req.params.id });
   if (!contract) return res.status(400).send("contract not found");
   if (contract.manager == req.manager.email)
     return res.status(403).send("not authorized to approve own contract");
