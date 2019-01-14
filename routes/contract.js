@@ -46,6 +46,10 @@ router.get("/all", async (req, res) => {
   const result = await Contract.find({});
   res.send(result);
 });
+router.get("/:id", async (req, res) => {
+  const result = await Contract.findById(req.params.id);
+  res.send(result);
+});
 router.delete("/all", async (req, res) => {
   await Contract.deleteMany({});
   res.send(result);
